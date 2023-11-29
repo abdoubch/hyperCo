@@ -9,7 +9,7 @@ const SectionWrapper = (Component) =>
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.25 }}
-        className={`${styles.paddingX} mx-14 relative z-0 h-[100vh]`}
+        className={`${styles.paddingX} relative z-0 h-[100vh]`}
       >
         <Component />
       </motion.section>

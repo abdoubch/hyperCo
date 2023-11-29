@@ -2,32 +2,34 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import {
-  HeartIcon,
-  UserIcon,
-  ShoppingBagIcon,
+
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { styles } from "../styles";
 import { motion } from "framer-motion";
 import { slideIn } from "../utils/motion";
+import panier from "../assets/panier.svg"
+import heart from "../assets/heart.svg";
+
 
 const NavBar = () => {
   const [active, setActive] = useState("Acceuil");
+  const [searchBar, setSearchBar] = useState(false)
   const navLinks = [
     {
-      id: "/home",
+      id: "home",
       title: "Acceuil",
     },
     {
-      id: "/boutique",
+      id: "boutique",
       title: "Boutique",
     },
     {
-      id: "/blog",
+      id: "blog",
       title: "Blog",
     },
     {
-      id: "/contact",
+      id: "contact",
       title: "Nous contacter",
     },
   ];
@@ -37,49 +39,70 @@ const NavBar = () => {
         className={`flex justify-end py-3 px-2 ${styles.paddingX} bg-black/[5%]`}
       >
         <Link>
-          <p>Se connecter </p>
-        </Link>
-        <Link>
-          <p> / S'inscrire</p>
+          <p>Connexion </p>
         </Link>
       </div>
-      <nav className="relative w-full justify-center top-0 z-20 bg-primary py-3">
-        
+      {searchBar && (
+        <div className=" absolute top-0 w-full z-10  ">
+          <div className="h-[100vh]  bg-black/[0.2]">
+            <div className="absolute flex flex-col justify-around w-full h-[350px] bg-white">
+              <div className="flex justify-end items-end " onClick={()=>setSearchBar(!searchBar)}>
+                <img src="" alt="" />
+                kkkkkkkkk
+              </div>
+              <div className="flex justify-center items-center ">
+                <input
+                  type="text"
+                  className=" py-2 border-b-2 border-gray-400 bg-transparent w-[60%] h-11 placeholder:text-[30px] placeholder:font-bold"
+                  placeholder="Recherche"
+                />
+              </div>
+              <div className="flex justify-center items-center text-[30px] py-3 pb-10">
+                Recherche populaires :{" "}
+                <span className="font-bold">Jordan Adidas Panda ...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <nav className="relative w-full justify-center top-0 bg-primary py-3 px-10">
         <div
           className={`relative w-full flex justify-between items-center ${styles.paddingX}`}
         >
           <Link
-            to={`/`}
+            to={`/home`}
             onClick={() => setActive("Acceuil")}
             className="flex items-center gap-2"
           >
             <img src={logo} alt="" className="h-[120px] w-[212px]" />
           </Link>
-          <ul className="list-none lg:flex hidden gap-10">
+          <ul className="list-none lg:flex hidden gap-12">
             {navLinks.map((link) => (
               <li
                 key={link.id}
                 onClick={() => setActive(link.title)}
                 className={`${
                   active === link.title
-                    ? " text-main-red font-semibold"
-                    : "text-black"
-                } hover:bg-main-red rounded-xl hover:text-white px-4 py-1 text-[19px] transition-all duration-[0.6s]`}
+                    ? "border-b-4 border-main-red font-semibold"
+                    : ""
+                } hover:text-main-red py-1 text-[19px] transition-all duration-[0.6s]`}
               >
-                <Link to={`${link.id}`}>{link.title}</Link>
+                <Link to={`/${link.id}`}>{link.title}</Link>
               </li>
             ))}
           </ul>
           <div className=" hidden lg:flex justify-around items-center gap-5">
-            {/* <div className="px-6 py-3 bg-gray-200 hover:bg-main-red/50 duration-[0.5s] transition-all text-[14px]  rounded-3xl cursor-pointer text-black">
-            Signin
-          </div>
-          <div className="px-6 py-3 bg-main-red hover:bg-main-red/50 duration-[0.5s] transition-all  rounded-3xl text-[14px] cursor-pointer text-black">
-            Signup
-          </div> */}
-            <UserIcon className="text-black h-[30px] w-[30px] cursor-pointer" />
-            <ShoppingBagIcon className="text-black h-[30px] w-[30px] cursor-pointer" />
-            {/* <HeartIcon className="text-black h-[30px] w-[30px] cursor-pointer" /> */}
+            <img
+              src={panier}
+              alt=""
+              className="w-[30px] h-[30px] cursor-pointer"
+            />
+            <img
+              src={heart}
+              alt=""
+              className="w-[30px] h-[30px] cursor-pointer"
+            />
+
             <MagnifyingGlassIcon
               className="text-black h-[30px] w-[30px] cursor-pointer"
               onClick={() => setSearchBar(!searchBar)}
@@ -93,41 +116,4 @@ const NavBar = () => {
 
 export default NavBar;
 
-// import React, { useState } from "react";
-// import logo from "../assets/logo.png";
-// import { Link } from "react-router-dom";
-// const NavBar = () => {
-//   const [active, setActive] = useState("Home");
-//   return (
-//     <nav className="w-full flex items-center py-4 sticky top-0 z-20 bg-white">
-//       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-//         <Link to="/" className="flex items-center gap-2" onClick={() => {setActive("Home")}}>
-//           <img src={logo} alt="logo" />
-//         </Link>
-//         <ul className="list-none hidden sm:flex flex-row gap-10">
-//           {navLinks.map((link) => (
-//             <li
-//               key={link.id}
-//               onClick={() => setActive(link.title)}
-//               className={`${
-//                 active === link.title ? "border-b-4 border-main-yellow" : ""
-//               } text-black text-[19px] transition-all duration-[0.5s]`}
-//             >
-//               <Link to={`${link.id}`}>{link.title}</Link>
-//             </li>
-//           ))}
-//         </ul>
-//         <div className=" hidden sm:flex justify-around  items-center gap-3">
-//           <div className="px-6 py-3 bg-gray-200 hover:bg-main-yellow/50 duration-[0.5s] transition-all text-[14px]  rounded-3xl cursor-pointer text-black">
-//             Signin
-//           </div>
-//           <div className="px-6 py-3 bg-main-yellow hover:bg-main-yellow/50 duration-[0.5s] transition-all  rounded-3xl text-[14px] cursor-pointer text-black">
-//             Signup
-//           </div>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
 
-// export default NavBar;
