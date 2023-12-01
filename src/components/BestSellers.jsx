@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { fadeIn, slideIn } from "../utils/motion";
 import { Link } from "react-router-dom";
+import { data } from "autoprefixer";
+
 
 const BestSellers = ({data ,title}) => {
   

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavBar } from "./components";
+import { Footer, NavBar } from "./components";
 import {
   PageAcceuil,
   PageBlog,
@@ -24,6 +24,7 @@ function App() {
                 <Route path="/blog" element={<PageBlog />} />
                 <Route path="/contact" element={<PageContact />} />
               </Routes>
+              <Footer/>
             </>
           }
         />

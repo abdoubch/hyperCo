@@ -1,7 +1,10 @@
 import NavBar from "./NavBar";
 import BestSellers from "./BestSellers";
-import Nouveau from "./Nouveau";
 import ItemCard from "./ItemCard";
 import Blog from "./Blog";
+import Footer from "./Footer";
+import Hero from "./Hero";
+import ItemSection from "./ItemSection";
+import Pagination from "./Pagination";
 
-export { NavBar, Nouveau, BestSellers, ItemCard, Blog };
+export { NavBar, BestSellers, ItemCard, Blog, Footer, ItemSection,Pagination };
